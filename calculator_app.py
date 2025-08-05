@@ -218,6 +218,7 @@ def neg():
 
     if result_just_calculated:
         clear(keep_result=True)
+        result = convert_number(result)
         result = -result
         calc_string = str(result)
         results_entry.delete(0, 'end')
@@ -436,7 +437,10 @@ def inverse():
 
     if result_just_calculated:
         clear(keep_result=True)
-        result = 1/result
+        result = convert_number(result)
+        result = float(1/result)
+        result = f'{result:.{MAX_DECIMAL_PLACES}f}'.rstrip('0').rstrip('.')
+
         calc_string = str(result)
         results_entry.delete(0, 'end')
         results_entry.insert(0, calc_string)
